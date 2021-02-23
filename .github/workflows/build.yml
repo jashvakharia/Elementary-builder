@@ -39,8 +39,20 @@ jobs:
          run: |
               cd os/working_dir/
               ls
-              
+
+       - name: Release Builds
+         uses: "marvinpinto/action-automatic-releases@latest"
+         with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Daily build Elementary"
+          files: |
+             os/working_dir/*.iso
+             
        - uses: actions/upload-artifact@v2
          with:
           name: Built ElementaryOS Image
           path: os/working_dir/*.iso
+          
+          

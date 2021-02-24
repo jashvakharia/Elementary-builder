@@ -34,25 +34,19 @@ jobs:
               debian:latest \
               /bin/bash -s etc/terraform-daily-6.0-azure.conf < build.sh
 
-       
-       - name: ls
-         run: |
-              cd os/working_dir/
-              ls
-
        - name: Release Builds
          uses: "marvinpinto/action-automatic-releases@latest"
          with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
-          title: "Daily build Elementary"
+          title: "Weekly build Elementary"
           files: |
-             os/working_dir/*.iso
+             os/builds/arm64/*
              
        - uses: actions/upload-artifact@v2
          with:
           name: Built ElementaryOS Image
-          path: os/working_dir/*.iso
+          path: os/builds/arm64/*.iso
           
           

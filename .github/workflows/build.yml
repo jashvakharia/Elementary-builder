@@ -32,7 +32,7 @@ jobs:
               -v ${PWD}:/working_dir \
               -w /working_dir \
               debian:latest \
-              /bin/bash -s etc/terraform-daily-6.0-i386.conf < build.sh
+              /bin/bash -s etc/terraform-daily-6.0-azure.conf < build.sh
 
        - name: Release Builds
          uses: "marvinpinto/action-automatic-releases@latest"

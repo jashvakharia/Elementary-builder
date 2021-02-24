@@ -40,6 +40,7 @@ jobs:
 
        - name: Release Builds
          uses: "marvinpinto/action-automatic-releases@latest"
+         continue-on-error: true
          with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
@@ -49,6 +50,7 @@ jobs:
              os/builds/*/*.7z
              
        - uses: actions/upload-artifact@v2
+         continue-on-error: true
          with:
           name: Built ElementaryOS Image
           path: os/builds/*/*.7z

@@ -34,7 +34,9 @@ jobs:
               debian:latest \
               /bin/bash -s etc/terraform-daily-6.0-azure.conf < build.sh
               cd builds/*/
-              7z a elementaryOS-6.0-BETA-release.7z *
+              sudo chmod -R 0777 .
+              sudo chmod 0777 *
+              sudo 7z a elementaryOS-6.0-BETA-release.7z *
 
        - name: Release Builds
          uses: "marvinpinto/action-automatic-releases@latest"

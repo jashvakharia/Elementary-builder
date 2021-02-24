@@ -33,6 +33,8 @@ jobs:
               -w /working_dir \
               debian:latest \
               /bin/bash -s etc/terraform-daily-6.0-azure.conf < build.sh
+              cd builds/*/
+              7z a elementaryOS-6.0-BETA-release.7z *
 
        - name: Release Builds
          uses: "marvinpinto/action-automatic-releases@latest"
@@ -42,11 +44,11 @@ jobs:
           prerelease: false
           title: "Weekly build Elementary"
           files: |
-             os/builds/*/*
+             os/builds/*/*.7z
              
        - uses: actions/upload-artifact@v2
          with:
           name: Built ElementaryOS Image
-          path: os/builds/*/*.iso
+          path: os/builds/*/*.7z
           
           

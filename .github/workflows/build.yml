@@ -25,14 +25,14 @@ jobs:
        - name: Clone my fork of Elementary Build system
          run: git clone https://github.com/JamieHoSzeYui/os
        
-       - name: Setting up ErfanGSI requirements
+       - name: Build elementary 
          run: |
               cd os
               docker run --privileged -i -v /proc:/proc \
               -v ${PWD}:/working_dir \
               -w /working_dir \
               debian:latest \
-              /bin/bash -s etc/terraform-daily-6.0-azure.conf < build.sh
+              /bin/bash -s etc/terraform-daily-6.0-i386.conf < build.sh
 
        - name: Release Builds
          uses: "marvinpinto/action-automatic-releases@latest"
@@ -42,11 +42,11 @@ jobs:
           prerelease: false
           title: "Weekly build Elementary"
           files: |
-             os/builds/arm64/*
+             os/builds/*/*
              
        - uses: actions/upload-artifact@v2
          with:
           name: Built ElementaryOS Image
-          path: os/builds/arm64/*.iso
+          path: os/builds/*/*.iso
           
           
